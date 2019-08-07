@@ -10,18 +10,18 @@
     <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key" [options]="question.options"
       [formControlName]="question.key"></p-dropdown>
 
-    <div *ngSwitchCase="'array'">
+    <p-card *ngSwitchCase="'array'">
       <ng-container *ngFor="let subsection of question.value; let i = index">
-        <p-card class="form-row">
-          <div *ngFor="let q of subsection">
-            <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
-          </div>
-          <button type="button" (click)="question.remove(i, form.get(question.key))">Remove</button>
-        </p-card>
+        <div *ngFor="let q of subsection">
+          <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
+        </div>
+        <br>
+        <button type="button" (click)="question.remove(i, form.get(question.key))">Remove</button>
+        <hr>
         <br>
       </ng-container>
       <button type="button" (click)="question.add(form.get(question.key), form.get(question.key).length)">Add</button>
-    </div>
+    </p-card>
 
 
   </div>
