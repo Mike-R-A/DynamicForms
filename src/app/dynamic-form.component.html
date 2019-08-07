@@ -1,16 +1,19 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+<div class="form">
+  <p-panel header="Dynamic Form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-    <div *ngFor="let question of questions" class="form-row">
-      <app-question [question]="question" [form]="form"></app-question>
+      <div *ngFor="let question of questions" class="form-row">
+        <app-question [question]="question" [form]="form"></app-question>
+      </div>
+
+      <div class="form-row">
+        <button pButton type="submit" [disabled]="!form.valid" label="Save" icon="pi pi-save"
+          class="ui-button-raised ui-button-success"></button>
+      </div>
+    </form>
+
+    <div *ngIf="payLoad" class="form-row">
+      <strong>Saved the following values</strong><br>{{payLoad}}
     </div>
-
-    <div class="form-row">
-      <button pButton type="submit" [disabled]="!form.valid" label="Save"></button>
-    </div>
-  </form>
-
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Saved the following values</strong><br>{{payLoad}}
-  </div>
+  </p-panel>
 </div>

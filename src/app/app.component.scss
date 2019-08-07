@@ -1,0 +1,32 @@
+$header-height: 80px;
+$background-color: #252f5f;
+
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $header-height;
+  background-color: $background-color;
+}
+
+.content {
+  position: fixed;
+  top: $header-height;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: auto;
+
+  background-image: url("~/assets/students-rhossili-beach-1600-788-med.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+svg {
+  position: absolute;
+  top: 10%;
+  left: 2px;
+  height: 80%;
+}

@@ -5,6 +5,7 @@ import { QuestionService } from './question.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   providers: [QuestionService]
 })
 export class AppComponent {
