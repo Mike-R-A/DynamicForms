@@ -100,6 +100,21 @@ export class QuestionService {
             ],
             order: 3
           })
+          // ,
+          // new ArrayQuestion({
+          //   key: 'xyz',
+          //   label: 'something',
+          //   value: [],
+          //   order: 5,
+          //   questions: [
+          //     new TextboxQuestion({
+          //       key: 'abc',
+          //       label: 'something else',
+          //       value: '',
+          //       order: 1,
+          //       type: 'text'
+          //     })]
+          // })
         ]
       }),
 
