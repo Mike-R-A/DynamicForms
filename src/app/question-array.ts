@@ -4,18 +4,18 @@ import { FormArray, FormGroup, FormControl } from '@angular/forms';
 
 export class ArrayQuestion extends QuestionBase<QuestionBase<any>[][]> {
     controlType = 'array';
-    questions: QuestionBase<any>[] = [];
+    questionsMethod: () => QuestionBase<any>[];
     questionControlService: QuestionControlService;
 
     constructor(options: any = {}) {
         super(options);
-        this.questions = options.questions;
+        this.questionsMethod = options.questionsMethod;
         this.questionControlService = new QuestionControlService();
     }
 
     add(formArray: FormArray) {
-        this.value.push(this.questions);
-        const controls = this.questionControlService.toFormGroup(this.questions);
+        this.value.push(this.questionsMethod());
+        const controls = this.questionControlService.toFormGroup(this.questionsMethod());
         formArray.push(controls);
     }
 

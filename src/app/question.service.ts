@@ -72,7 +72,7 @@ export class QuestionService {
         label: 'Qualifications',
         value: [],
         order: 5,
-        questions: [
+        questionsMethod: () => [
           new TextboxQuestion({
             key: 'qualName',
             label: 'Name',
@@ -100,21 +100,43 @@ export class QuestionService {
             ],
             order: 3
           })
-          // ,
-          // new ArrayQuestion({
-          //   key: 'xyz',
-          //   label: 'something',
-          //   value: [],
-          //   order: 5,
-          //   questions: [
-          //     new TextboxQuestion({
-          //       key: 'abc',
-          //       label: 'something else',
-          //       value: '',
-          //       order: 1,
-          //       type: 'text'
-          //     })]
-          // })
+          ,
+          new ArrayQuestion({
+            key: 'xyz',
+            label: 'something',
+            value: [],
+            order: 5,
+            questionsMethod: () => [
+              new TextboxQuestion({
+                key: 'abc',
+                label: 'something else',
+                value: '',
+                order: 1,
+                type: 'text'
+              }),
+              new ArrayQuestion({
+                key: 'xyz',
+                label: 'something',
+                value: [],
+                order: 5,
+                questionsMethod: () => [
+                  new TextboxQuestion({
+                    key: 'abcsdfs',
+                    label: 'something else123',
+                    value: '',
+                    order: 1,
+                    type: 'text'
+                  }),
+                  new TextboxQuestion({
+                    key: '747547456',
+                    label: 'something else1234',
+                    value: '',
+                    order: 1,
+                    type: 'text'
+                  })],
+              })
+            ]
+          })
         ]
       }),
 
