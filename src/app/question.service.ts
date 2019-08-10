@@ -102,8 +102,8 @@ export class QuestionService {
           })
           ,
           new ArrayQuestion({
-            key: 'xyz',
-            label: 'something',
+            key: 'modules',
+            label: 'Modules',
             value: [],
             order: 5,
             questionsMethod: () => [
@@ -115,23 +115,23 @@ export class QuestionService {
                 type: 'text'
               }),
               new ArrayQuestion({
-                key: 'xyz',
-                label: 'something',
+                key: 'modulesections',
+                label: 'Sections',
                 value: [],
-                order: 5,
+                order: 2,
                 questionsMethod: () => [
                   new TextboxQuestion({
-                    key: 'abcsdfs',
-                    label: 'something else123',
+                    key: 'moduleSectionName',
+                    label: 'Name',
                     value: '',
                     order: 1,
                     type: 'text'
                   }),
                   new TextboxQuestion({
-                    key: '747547456',
-                    label: 'something else1234',
+                    key: 'moduleSectionGrade',
+                    label: 'Grade',
                     value: '',
-                    order: 1,
+                    order: 2,
                     type: 'text'
                   })],
               })

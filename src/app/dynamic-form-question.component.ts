@@ -17,8 +17,6 @@ export class DynamicFormQuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.question, this.form);
-
     if (this.question.valueChangesMethod && this.form.get(this.question.key)) {
       this.changesSubscription = this.form.get(this.question.key).valueChanges.subscribe(v => {
         this.question.valueChangesMethod(v, this.form)

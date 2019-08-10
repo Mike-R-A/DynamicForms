@@ -6,11 +6,15 @@ export class ArrayQuestion extends QuestionBase<QuestionBase<any>[][]> {
     controlType = 'array';
     questionsMethod: () => QuestionBase<any>[];
     questionControlService: QuestionControlService;
+    addButtonLabel: string;
+    removeButtonLabel: string;
 
     constructor(options: any = {}) {
         super(options);
         this.questionsMethod = options.questionsMethod;
         this.questionControlService = new QuestionControlService();
+        this.addButtonLabel = options.addButtonLabel;
+        this.removeButtonLabel = options.removeButtonLabel;
     }
 
     add(formArray: FormArray) {
@@ -24,4 +28,20 @@ export class ArrayQuestion extends QuestionBase<QuestionBase<any>[][]> {
         this.value.splice(index, 1);
     }
 
+    get addLabel() {
+        return this.addButtonLabel || 'Add ' + this.dePluralise(this.label);
+    }
+
+    get removeLabel() {
+        return this.removeButtonLabel || 'Remove ' + this.dePluralise(this.label);
+    }
+
+    private dePluralise(word: string) {
+        if (word) {
+            if (word[word.length - 1].toLowerCase() == 's') {
+                return word.slice(0, word.length - 1);
+            }
+        }
+        return word;
+    }
 }

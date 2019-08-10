@@ -16,12 +16,13 @@
           <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
         </div>
         <br>
-        <button pButton type="button" label="Remove" icon="pi pi-minus" class="ui-button-raised ui-button-danger"
-          (click)="question.remove(i, form.get(question.key))"></button>
+        <button pButton type="button" [label]="question.removeLabel" icon="pi pi-minus"
+          class="ui-button-raised ui-button-danger" (click)="question.remove(i, form.get(question.key))"></button>
         <hr>
         <br>
       </ng-container>
-      <button pButton type="button" label="Add" icon="pi pi-plus" class="ui-button-raised ui-button-success"
+      <button pButton type="button" [label]="question.addLabel" icon="pi pi-plus"
+        class="ui-button-raised ui-button-success"
         (click)="question.add(form.get(question.key), form.get(question.key).length)"></button>
     </p-card>
 
