@@ -23,6 +23,24 @@ $background-color: #252f5f;
   background-size: cover;
 }
 
+.expand-burger-button {
+  height: 100%;
+  float: right;
+  color: white;
+  font-size: 30px;
+  padding: 18px;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+
+  &:hover {
+    background-color: lighten($background-color, 5%);
+    ;
+  }
+}
+
+
 
 svg {
   position: absolute;

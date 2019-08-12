@@ -10,7 +10,7 @@ import { QuestionService } from './question.service';
 })
 export class AppComponent {
   questions: any[];
-
+  displaySidebar = false;
   constructor(service: QuestionService) {
     this.questions = service.getQuestions();
   }

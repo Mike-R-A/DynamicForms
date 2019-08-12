@@ -11,6 +11,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { CardModule } from 'primeng/card';
+import { SidebarModule } from 'primeng/sidebar';
 import { FieldsetModule } from 'primeng/fieldset';
 import { QuestionControlService } from './question-control.service';
 
@@ -24,7 +25,8 @@ import { QuestionControlService } from './question-control.service';
     ButtonModule,
     PanelModule,
     FieldsetModule,
-    CardModule
+    CardModule,
+    SidebarModule
   ],
   declarations: [AppComponent, DynamicFormComponent, DynamicFormQuestionComponent],
   providers: [
