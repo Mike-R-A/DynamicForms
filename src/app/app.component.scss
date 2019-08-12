@@ -36,7 +36,10 @@ $background-color: #252f5f;
 
   &:hover {
     background-color: lighten($background-color, 5%);
-    ;
+  }
+
+  @media only screen and (min-width: 600px) {
+    display: none;
   }
 }
 
