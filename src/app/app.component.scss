@@ -1,5 +1,6 @@
 $header-height: 80px;
 $background-color: #252f5f;
+$logo-padding: 2px;
 
 .header {
   position: fixed;
@@ -23,6 +24,16 @@ $background-color: #252f5f;
   background-size: cover;
 }
 
+a.home-link {
+  img {
+    position: relative;
+    top: $logo-padding;
+    left: $logo-padding;
+    height: $header-height - 2 * $logo-padding;
+  }
+}
+
+
 .expand-burger-button {
   height: 100%;
   float: right;
@@ -35,19 +46,10 @@ $background-color: #252f5f;
   transition-delay: 0s;
 
   &:hover {
-    background-color: lighten($background-color, 5%);
+    background-color: lighten($background-color, 10%);
   }
 
   @media only screen and (min-width: 600px) {
     display: none;
   }
-}
-
-
-
-svg {
-  position: absolute;
-  top: 10%;
-  left: 2px;
-  height: 80%;
 }

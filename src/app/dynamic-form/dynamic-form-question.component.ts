@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { QuestionBase } from './question-base';
+import { QuestionBase } from '../question-base';
 import { Subscription } from 'rxjs';
 
 @Component({
