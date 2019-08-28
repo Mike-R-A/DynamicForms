@@ -17,8 +17,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatStepperModule } from '@angular/material/stepper';
 import { TranslateModule } from "@ngx-translate/core";
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -42,7 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatRadioModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatStepperModule,
+    MatIconModule
   ],
   exports: [
     CommonModule,
@@ -64,7 +68,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatRadioModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatStepperModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }
