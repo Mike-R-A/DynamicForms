@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-question',
-  templateUrl: './dynamic-form-question.component.html'
+  templateUrl: './dynamic-form-question.component.html',
+  styleUrls: ['./dynamic-form-question.component.scss']
 })
 export class DynamicFormQuestionComponent implements OnInit, OnDestroy {
   @Input() question: QuestionBase<any>;

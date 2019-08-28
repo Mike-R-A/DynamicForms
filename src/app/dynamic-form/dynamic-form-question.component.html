@@ -1,33 +1,62 @@
 <div [formGroup]="form" *ngIf="question.showQuestion(form)">
 
-  <label [attr.for]="question.key">{{question.label}}</label>
+
 
   <div [ngSwitch]="question.controlType">
 
-    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type"
-      pInputText>
+    <mat-form-field *ngSwitchCase="'textbox'" class="example-full-width">
+      <input [formControlName]="question.key" [id]="question.key" [type]="question.type" matInput
+        [placeholder]="question.label">
+      <mat-error *ngIf="!isValid">
+        {{question.label}} is required
+      </mat-error>
+    </mat-form-field>
 
-    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key" [options]="question.options"
-      [formControlName]="question.key"></p-dropdown>
+    <mat-form-field *ngSwitchCase="'dropdown'">
+      <mat-label>{{question.label}}</mat-label>
+      <mat-select [id]="question.key" [formControlName]="question.key">
+        <mat-option *ngFor="let option of question.options" [value]="option.value">
+          {{option.label}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!isValid">
+        {{question.label}} is required
+      </mat-error>
+    </mat-form-field>
 
-    <p-card *ngSwitchCase="'array'">
+    <div *ngSwitchCase="'radio'">
+      <mat-radio-group [id]="question.key" [formControlName]="question.key" class="radio-group"
+        attr.aria-labelledby="{{question.key + '-label'}}">
+        <mat-label [id]="question.key + '-label'" [attr.for]="question.key">{{question.label}}</mat-label>
+        <mat-radio-button *ngFor="let option of question.options" [value]="option.value" class="radio-button">
+          {{option.label}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-card *ngSwitchCase="'array'">
       <ng-container *ngFor="let subsection of question.value; let i = index">
         <div *ngFor="let q of subsection">
           <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
         </div>
         <br>
-        <button pButton type="button" [label]="question.removeLabel" icon="pi pi-minus"
-          class="ui-button-raised ui-button-danger" (click)="question.remove(i, form.get(question.key))"></button>
+        <button mat-raised-button color="warn" type="button" class="ui-button-raised ui-button-danger"
+          (click)="question.remove(i, form.get(question.key))">{{question.removeLabel}}</button>
         <hr>
         <br>
       </ng-container>
-      <button pButton type="button" [label]="question.addLabel" icon="pi pi-plus"
-        class="ui-button-raised ui-button-success"
-        (click)="question.add(form.get(question.key), form.get(question.key).length)"></button>
-    </p-card>
+      <button mat-raised-button color="primary" type="button" class="ui-button-raised ui-button-success"
+        (click)="question.add(form.get(question.key), form.get(question.key).length)">{{question.addLabel}}</button>
+    </mat-card>
 
-
+    <mat-form-field *ngSwitchCase="'date'">
+      <input matInput [matDatepicker]="picker" [placeholder]="question.label" [formControlName]="question.key">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="!isValid">
+        {{question.label}} is required
+      </mat-error>
+    </mat-form-field>
   </div>
 
-  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
 </div>

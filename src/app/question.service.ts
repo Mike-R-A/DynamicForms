@@ -6,6 +6,8 @@ import { TextboxQuestion } from './question-textbox';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { ArrayQuestion } from './question-array';
 import { QuestionControlService } from './question-control.service';
+import { RadioQuestion } from './question-radio';
+import { DateQuestion } from './question-date';
 
 @Injectable()
 export class QuestionService {
@@ -21,15 +23,14 @@ export class QuestionService {
     let questions: QuestionBase<any>[] = [
 
       new DropdownQuestion({
-        key: 'brave',
-        label: 'Bravery Rating',
+        key: 'institution',
+        label: 'Last Institution',
         options: [
-          { label: 'solid', value: 'Solid' },
-          { label: 'great', value: 'Great' },
-          { label: 'good', value: 'Good' },
-          { label: 'unproven', value: 'Unproven' }
+          { label: 'Swansea University', value: 'Swansea' },
+          { label: 'Other', value: 'Other' }
         ],
-        order: 3
+        order: 3,
+        required: true,
       }),
 
       new TextboxQuestion({
@@ -42,8 +43,6 @@ export class QuestionService {
         valueChangesMethod: (value: string, form: FormGroup) => {
           if (value === 'Mike') {
             form.get('lastName').setValue('Ashford');
-          } else {
-            form.get('lastName').setValue('');
           }
         }
       }),
@@ -58,12 +57,21 @@ export class QuestionService {
       }),
 
       new TextboxQuestion({
-        key: 'emailAddress',
+        key: 'email',
         label: 'Email',
-        type: 'email',
+        value: '',
+        required: false,
         order: 4,
+        type: 'text'
+      }),
+
+      new TextboxQuestion({
+        key: 'overseasInstitution',
+        label: 'Institution Name',
+        type: 'text',
+        order: 5,
         showQuestionMethod: (form: FormGroup) => {
-          return form.get('brave').value === 'Good'
+          return form.get('institution').value === 'Other'
         }
       }),
 
@@ -71,7 +79,7 @@ export class QuestionService {
         key: 'qualifications',
         label: 'Qualifications',
         value: [],
-        order: 5,
+        order: 6,
         questionsMethod: () => [
           new TextboxQuestion({
             key: 'qualName',
@@ -140,12 +148,24 @@ export class QuestionService {
         ]
       }),
 
-      new TextboxQuestion({
-        key: 'gender',
-        label: 'Gender',
-        type: 'text',
-        order: 6
-      })
+      new RadioQuestion({
+        key: 'someOptionsRadio',
+        label: 'Pick an option',
+        order: 8,
+        options: [
+          { label: 'A', value: 'A' },
+          { label: 'B', value: 'B' },
+          { label: 'C', value: 'C' },
+          { label: 'D', value: 'D' }
+        ]
+      }),
+
+      new DateQuestion({
+        key: 'dob',
+        label: 'Date of Birth',
+        order: 9,
+        required: true,
+      }),
     ];
 
     return questions.sort((a, b) => a.order - b.order);
