@@ -9,6 +9,13 @@ import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { SharedModule } from './shared/shared.module';
 import { MomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { CustomTranslateLoader } from './translate-loader';
+import { HttpClient } from '@angular/common/http';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new CustomTranslateLoader(http);
+}
 
 @NgModule({
   imports: [
@@ -17,7 +24,14 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
     AppRoutingModule,
     DynamicFormModule,
     SharedModule,
-    MomentDateModule
+    MomentDateModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   declarations: [AppComponent],
   providers: [

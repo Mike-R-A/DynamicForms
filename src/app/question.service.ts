@@ -24,7 +24,7 @@ export class QuestionService {
 
       new DropdownQuestion({
         key: 'institution',
-        label: 'Last Institution',
+        label: 'Label.LastInstitution',
         options: [
           { label: 'Swansea University', value: 'Swansea' },
           { label: 'Other', value: 'Other' }
@@ -35,7 +35,7 @@ export class QuestionService {
 
       new TextboxQuestion({
         key: 'firstName',
-        label: 'First name',
+        label: 'Label.FirstName',
         value: 'Fred',
         required: true,
         order: 1,
@@ -49,7 +49,7 @@ export class QuestionService {
 
       new TextboxQuestion({
         key: 'lastName',
-        label: 'Last name',
+        label: 'Label.LastName',
         value: 'Jones',
         required: true,
         order: 2,
@@ -58,7 +58,7 @@ export class QuestionService {
 
       new TextboxQuestion({
         key: 'email',
-        label: 'Email',
+        label: 'Label.Email',
         value: '',
         required: false,
         order: 4,
@@ -67,7 +67,7 @@ export class QuestionService {
 
       new TextboxQuestion({
         key: 'overseasInstitution',
-        label: 'Institution Name',
+        label: 'Label.InstitutionName',
         type: 'text',
         order: 5,
         showQuestionMethod: (form: FormGroup) => {
@@ -77,13 +77,15 @@ export class QuestionService {
 
       new ArrayQuestion({
         key: 'qualifications',
-        label: 'Qualifications',
+        label: 'Label.Qualifications',
+        addButtonLabel: 'Button.AddQualification',
+        removeButtonLabel: 'Button.RemoveQualification',
         value: [],
         order: 6,
         questionsMethod: () => [
           new TextboxQuestion({
             key: 'qualName',
-            label: 'Name',
+            label: 'Label.QualificationName',
             value: '',
             order: 1,
             type: 'text'
@@ -91,7 +93,7 @@ export class QuestionService {
 
           new TextboxQuestion({
             key: 'qualResult',
-            label: 'Result',
+            label: 'Label.QualificationResult',
             value: '',
             order: 2,
             type: 'text'
@@ -112,6 +114,8 @@ export class QuestionService {
           new ArrayQuestion({
             key: 'modules',
             label: 'Modules',
+            addButtonLabel: 'Button.AddModule',
+            removeButtonLabel: 'Button.RemoveModule',
             value: [],
             order: 5,
             questionsMethod: () => [
@@ -121,27 +125,6 @@ export class QuestionService {
                 value: '',
                 order: 1,
                 type: 'text'
-              }),
-              new ArrayQuestion({
-                key: 'modulesections',
-                label: 'Sections',
-                value: [],
-                order: 2,
-                questionsMethod: () => [
-                  new TextboxQuestion({
-                    key: 'moduleSectionName',
-                    label: 'Name',
-                    value: '',
-                    order: 1,
-                    type: 'text'
-                  }),
-                  new TextboxQuestion({
-                    key: 'moduleSectionGrade',
-                    label: 'Grade',
-                    value: '',
-                    order: 2,
-                    type: 'text'
-                  })],
               })
             ]
           })

@@ -27,21 +27,4 @@ export class ArrayQuestion extends QuestionBase<QuestionBase<any>[][]> {
         formArray.removeAt(index);
         this.value.splice(index, 1);
     }
-
-    get addLabel() {
-        return this.addButtonLabel || 'Add ' + this.dePluralise(this.label);
-    }
-
-    get removeLabel() {
-        return this.removeButtonLabel || 'Remove ' + this.dePluralise(this.label);
-    }
-
-    private dePluralise(word: string) {
-        if (word) {
-            if (word[word.length - 1].toLowerCase() == 's') {
-                return word.slice(0, word.length - 1);
-            }
-        }
-        return word;
-    }
 }

@@ -6,28 +6,28 @@
 
     <mat-form-field *ngSwitchCase="'textbox'" class="example-full-width">
       <input [formControlName]="question.key" [id]="question.key" [type]="question.type" matInput
-        [placeholder]="question.label">
+        placeholder="{{question.label | translate}}">
       <mat-error *ngIf="!isValid">
         {{question.label}} is required
       </mat-error>
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'dropdown'">
-      <mat-label>{{question.label}}</mat-label>
+      <mat-label>{{question.label | translate}}</mat-label>
       <mat-select [id]="question.key" [formControlName]="question.key">
         <mat-option *ngFor="let option of question.options" [value]="option.value">
           {{option.label}}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="!isValid">
-        {{question.label}} is required
+        {{question.label | translate}} is required
       </mat-error>
     </mat-form-field>
 
     <div *ngSwitchCase="'radio'">
       <mat-radio-group [id]="question.key" [formControlName]="question.key" class="radio-group"
         attr.aria-labelledby="{{question.key + '-label'}}">
-        <mat-label [id]="question.key + '-label'" [attr.for]="question.key">{{question.label}}</mat-label>
+        <mat-label [id]="question.key + '-label'" [attr.for]="question.key">{{question.label | translate}}</mat-label>
         <mat-radio-button *ngFor="let option of question.options" [value]="option.value" class="radio-button">
           {{option.label}}
         </mat-radio-button>
@@ -46,7 +46,7 @@
         <br>
       </ng-container>
       <button mat-raised-button color="primary" type="button" class="ui-button-raised ui-button-success"
-        (click)="question.add(form.get(question.key), form.get(question.key).length)">{{question.addLabel}}</button>
+        (click)="question.add(form.get(question.key), form.get(question.key).length)">{{question.addButtonLabel | translate}}</button>
     </mat-card>
 
     <mat-form-field *ngSwitchCase="'date'">
@@ -54,7 +54,7 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="!isValid">
-        {{question.label}} is required
+        {{question.label | translate}} is required
       </mat-error>
     </mat-form-field>
   </div>

@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TranslateModule } from "@ngx-translate/core";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -25,6 +27,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    TranslateModule,
+    HttpClientModule,
     // InputTextModule,
     // DropdownModule,
     // ButtonModule,
@@ -45,6 +49,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    TranslateModule,
+    HttpClientModule,
     // InputTextModule,
     // DropdownModule,
     // ButtonModule,
