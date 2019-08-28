@@ -1,7 +1,7 @@
 <div class="form">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{title}} {{'test' | translate}}</mat-card-title>
+      <mat-card-title>{{'Header.FormTitle' | translate}}</mat-card-title>
     </mat-card-header>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
@@ -10,14 +10,22 @@
       </div>
 
 
-      <div class="form-row">
+      <div class="form-row action-button-panel">
+        <button mat-raised-button color="primary" type="button"
+          class="action-button">{{'Button.Save' | translate}}</button>
         <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid"
-          class="ui-button-raised ui-button-success">Save</button>
+          class="action-button">{{'Button.Submit' | translate}}</button>
+      </div>
+      <div class="fab">
+        <button mat-fab color="primary" type="button">{{'Button.Save' | translate}}</button>
+        <button mat-fab color="accent" type="submit" (click)="submit()">{{'Button.Submit' | translate}}</button>
       </div>
     </form>
 
-    <div class="form-row">
+    <!-- <div class="form-row">
       {{form.value | json}}
-    </div>
+    </div> -->
   </mat-card>
+
+
 </div>

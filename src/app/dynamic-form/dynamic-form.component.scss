@@ -1,9 +1,43 @@
+@import '~src/assets/css-variables.scss';
+
 .form {
   width: 100%;
-  max-width: 1000px;
+  max-width: $mobile-view-switchover-width;
   margin: 0 auto;
 }
 
 .form-row {
   margin-top: 5px;
+}
+
+.action-button {
+  margin-right: 10px;
+}
+
+
+
+.fab {
+  @media only screen and (min-width: $mobile-view-switchover-width) {
+    display: none;
+  }
+
+  @media only screen and (max-width: $mobile-view-switchover-width) {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1000;
+
+    button {
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.action-button-panel {
+  @media only screen and (max-width: $mobile-view-switchover-width) {
+    display: none;
+  }
+
+  @media only screen and (max-width: $mobile-view-switchover-width) {}
 }

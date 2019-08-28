@@ -12,11 +12,37 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   questions: any[];
   displaySidebar = false;
-  constructor(service: QuestionService, translate: TranslateService) {
+  constructor(service: QuestionService, private translate: TranslateService) {
     translate.addLangs(['en-GB', 'cy-GB']);
     translate.setDefaultLang('en-GB');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/cy-GB|en-GB/) ? browserLang : 'en');
     this.questions = service.getQuestions();
+  }
+
+  get languageLabel() {
+    switch (this.translate.currentLang) {
+      case 'en':
+      case 'en-GB': {
+        return 'Cymraeg';
+      }
+      default: {
+        return 'English';
+      }
+    }
+  }
+
+  toggleLanguage() {
+    switch (this.translate.currentLang) {
+      case 'en':
+      case 'en-GB': {
+        this.translate.use('cy-GB');
+        break;
+      }
+      default: {
+        this.translate.use('en-GB');
+        break;
+      }
+    }
   }
 }

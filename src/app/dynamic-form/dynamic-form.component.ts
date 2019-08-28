@@ -12,9 +12,7 @@ import { QuestionService } from '../question.service';
 })
 export class DynamicFormComponent implements OnInit {
   questions: QuestionBase<any>[] = [];
-  title: string = "Dynamic form";
   form: FormGroup;
-  payLoad = '';
 
   constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService) {
     this.questions = this.questionsService.getQuestions();
@@ -26,8 +24,20 @@ export class DynamicFormComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    this.payLoad = JSON.stringify(this.form.value);
+  submit() {
+    if (this.form.invalid) {
+      this.markFormGroupTouched(this.form);
+    }
     console.log(this.form.value);
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).keys(formGroup.controls).map((x: any) => formGroup.controls[x]).forEach((control: any) => {
+      control.markAsTouched();
+
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 }

@@ -4,7 +4,9 @@
   </a>
 
 
-  <a class="expand-burger-button" (click)="displaySidebar = true"><i class="pi pi-bars"></i></a>
+  <button class="language-button" mat-button color="basic" (click)="toggleLanguage()">{{languageLabel}}</button>
+
+  <!-- <a class="expand-burger-button" (click)="displaySidebar = true"><i class="pi pi-bars"></i></a> -->
 </div>
 <div class="content">
   <router-outlet></router-outlet>

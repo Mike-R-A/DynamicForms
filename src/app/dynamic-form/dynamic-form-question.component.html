@@ -35,13 +35,16 @@
     </div>
 
     <mat-card *ngSwitchCase="'array'">
+      <mat-card-header>
+        <mat-card-title>{{question.label | translate}}</mat-card-title>
+      </mat-card-header>
       <ng-container *ngFor="let subsection of question.value; let i = index">
         <div *ngFor="let q of subsection">
           <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
         </div>
         <br>
-        <button mat-raised-button color="warn" type="button" class="ui-button-raised ui-button-danger"
-          (click)="question.remove(i, form.get(question.key))">{{question.removeLabel}}</button>
+        <button mat-raised-button color="warn" type="button"
+          (click)="question.remove(i, form.get(question.key))">{{question.removeButtonLabel | translate}}</button>
         <hr>
         <br>
       </ng-container>
@@ -50,7 +53,8 @@
     </mat-card>
 
     <mat-form-field *ngSwitchCase="'date'">
-      <input matInput [matDatepicker]="picker" [placeholder]="question.label" [formControlName]="question.key">
+      <input matInput [matDatepicker]="picker" placeholder="{{question.label | translate}}"
+        [formControlName]="question.key">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="!isValid">

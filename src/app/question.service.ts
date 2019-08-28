@@ -98,30 +98,24 @@ export class QuestionService {
             order: 2,
             type: 'text'
           }),
-
-          new DropdownQuestion({
-            key: 'someKey',
-            label: 'Some label',
-            options: [
-              { label: '1', value: '1' },
-              { label: '2', value: '2' },
-              { label: '3', value: '3' },
-              { label: '4', value: '4' }
-            ],
-            order: 3
-          })
-          ,
           new ArrayQuestion({
             key: 'modules',
-            label: 'Modules',
+            label: 'Label.Modules',
             addButtonLabel: 'Button.AddModule',
             removeButtonLabel: 'Button.RemoveModule',
             value: [],
             order: 5,
             questionsMethod: () => [
               new TextboxQuestion({
-                key: 'abc',
-                label: 'something else',
+                key: 'moduleName',
+                label: 'Label.ModuleName',
+                value: '',
+                order: 1,
+                type: 'text'
+              }),
+              new TextboxQuestion({
+                key: 'moduleResult',
+                label: 'Label.ModuleResult',
                 value: '',
                 order: 1,
                 type: 'text'
@@ -133,7 +127,7 @@ export class QuestionService {
 
       new RadioQuestion({
         key: 'someOptionsRadio',
-        label: 'Pick an option',
+        label: 'Label.PickAnOption',
         order: 8,
         options: [
           { label: 'A', value: 'A' },
@@ -145,7 +139,7 @@ export class QuestionService {
 
       new DateQuestion({
         key: 'dob',
-        label: 'Date of Birth',
+        label: 'Label.DateOfBirth',
         order: 9,
         required: true,
       }),
