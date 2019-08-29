@@ -1,7 +1,5 @@
 <div [formGroup]="form" *ngIf="question.showQuestion(form)">
 
-
-
   <div [ngSwitch]="question.controlType">
 
     <mat-form-field *ngSwitchCase="'textbox'" class="example-full-width">
@@ -34,20 +32,19 @@
       </mat-radio-group>
     </div>
 
-    <mat-card *ngSwitchCase="'array'">
+    <mat-card *ngSwitchCase="'array'" class="array">
       <mat-card-header>
         <mat-card-title>{{question.label | translate}}</mat-card-title>
       </mat-card-header>
-      <ng-container *ngFor="let subsection of question.value; let i = index">
+
+      <div *ngFor="let subsection of question.value; let i = index">
         <div *ngFor="let q of subsection">
           <app-question [question]="q" [form]="form.get(question.key + '.' + i)"></app-question>
         </div>
-        <br>
         <button mat-raised-button color="warn" type="button"
           (click)="question.remove(i, form.get(question.key))">{{question.removeButtonLabel | translate}}</button>
-        <hr>
-        <br>
-      </ng-container>
+        <mat-divider class="divider"></mat-divider>
+      </div>
       <button mat-raised-button color="primary" type="button" class="ui-button-raised ui-button-success"
         (click)="question.add(form.get(question.key), form.get(question.key).length)">{{question.addButtonLabel | translate}}</button>
     </mat-card>

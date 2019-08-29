@@ -11,10 +11,14 @@ export class CustomTranslateLoader implements TranslateLoader {
             case 'cy-GB': {
                 return of({
                     Header: {
-                        FormTitle: 'Ffurf Dynamig'
+                        FormTitle: 'Ffurf Dynamig',
+                        Personal: 'Personol',
+                        Education: 'Addysg',
+                        Other: 'Arall'
                     },
                     Label: {
                         LastInstitution: 'Sefydliad Diwethaf',
+                        InstitutionName: 'Enw\'r Sefydliad',
                         FirstName: 'Enw cyntaf',
                         LastName: 'Cyfenw',
                         Email: 'E-bost',
@@ -34,16 +38,24 @@ export class CustomTranslateLoader implements TranslateLoader {
                         RemoveModule: 'Tynnu Modiwl',
                         Save: 'Cadw',
                         Submit: 'Cyflwyno',
+                    },
+                    Validation: {
+                        IsRequired: 'yn ofynnol',
+                        Incomplete: 'Anghyflawn'
                     }
                 })
             }
             default: {
                 return of({
                     Header: {
-                        FormTitle: 'Dynamic Form'
+                        FormTitle: 'Dynamic Form',
+                        Personal: 'Personal',
+                        Education: 'Education',
+                        Other: 'Other'
                     },
                     Label: {
                         LastInstitution: 'Last Institution',
+                        InstitutionName: 'Institution Name',
                         FirstName: 'First Name',
                         LastName: 'Surname',
                         Email: 'Email',
@@ -63,6 +75,10 @@ export class CustomTranslateLoader implements TranslateLoader {
                         RemoveModule: 'Remove Module',
                         Save: 'Save',
                         Submit: 'Submit',
+                    },
+                    Validation: {
+                        IsRequired: 'is required',
+                        Incomplete: 'Incomplete'
                     }
                 })
             }

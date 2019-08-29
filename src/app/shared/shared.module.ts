@@ -21,6 +21,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { TranslateModule } from "@ngx-translate/core";
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from "@angular/material/list";
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -46,7 +48,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatDatepickerModule,
     MatStepperModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatDividerModule
   ],
   exports: [
     CommonModule,
@@ -70,7 +74,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatDatepickerModule,
     MatStepperModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatDividerModule
   ]
 })
 export class SharedModule { }

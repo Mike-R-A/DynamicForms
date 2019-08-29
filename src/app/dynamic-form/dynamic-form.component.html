@@ -5,19 +5,31 @@
     </mat-card-header>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-      <div *ngFor="let question of questions" class="form-row">
-        <app-question [question]="question" [form]="form"></app-question>
-      </div>
+      <ng-container *ngIf="!tabs">
+        <div *ngFor="let question of questions" class="form-row">
+          <app-question [question]="question" [form]="form"></app-question>
+        </div>
+      </ng-container>
 
+
+      <mat-vertical-stepper *ngIf="tabs">
+        <mat-step *ngFor="let tab of tabs; let i=index" [hasError]="!isTabValid(i)"
+          errorMessage="{{'Validation.Incomplete' | translate}}">
+          <ng-template matStepLabel>{{tab.label | translate}}</ng-template>
+          <div *ngFor="let question of getQuestions(i)" class="form-row">
+            <app-question [question]="question" [form]="form"></app-question>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
 
       <div class="form-row action-button-panel">
-        <button mat-raised-button color="primary" type="button"
-          class="action-button">{{'Button.Save' | translate}}</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid"
-          class="action-button">{{'Button.Submit' | translate}}</button>
+        <button mat-raised-button color="primary" type="button" class="action-button"
+          (click)="save()">{{'Button.Save' | translate}}</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" class="action-button"
+          (click)="submit()">{{'Button.Submit' | translate}}</button>
       </div>
       <div class="fab">
-        <button mat-fab color="primary" type="button">{{'Button.Save' | translate}}</button>
+        <button mat-fab color="primary" type="button" (click)="save()">{{'Button.Save' | translate}}</button>
         <button mat-fab color="accent" type="submit" (click)="submit()">{{'Button.Submit' | translate}}</button>
       </div>
     </form>

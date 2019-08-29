@@ -12,6 +12,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { CustomTranslateLoader } from './translate-loader';
 import { HttpClient } from '@angular/common/http';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 export function createTranslateLoader(http: HttpClient) {
   return new CustomTranslateLoader(http);
@@ -50,7 +51,11 @@ export function createTranslateLoader(http: HttpClient) {
         },
       },
     },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    }
   ],
   bootstrap: [AppComponent]
 })

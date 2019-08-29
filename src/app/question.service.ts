@@ -11,14 +11,29 @@ import { DateQuestion } from './question-date';
 
 @Injectable()
 export class QuestionService {
-  /**
-   *
-   */
   constructor() { }
 
-  // TODO: get from a remote source of question metadata
-  // TODO: make asynchronous
-  getQuestions() {
+  get tabs() {
+    return [{
+      label: 'Header.Personal',
+      maxQuestionNumber: 3
+    },
+    {
+      label: 'Header.Education',
+      maxQuestionNumber: 4
+    },
+    {
+      label: 'Header.Something',
+      maxQuestionNumber: 6
+    },
+    {
+      label: 'Header.Other',
+      maxQuestionNumber: this.questions.length
+    }
+    ];
+  }
+
+  get questions() {
 
     let questions: QuestionBase<any>[] = [
 
