@@ -13,7 +13,8 @@
 
 
       <mat-vertical-stepper *ngIf="tabs">
-        <mat-step *ngFor="let tab of tabs; let i=index" [hasError]="!isTabValid(i)"
+        <mat-step #step *ngFor="let tab of tabs; let i=index"
+          [hasError]="!isTabValid(i) && (step.interacted || submitHasBeenClicked)"
           errorMessage="{{'Validation.Incomplete' | translate}}">
           <ng-template matStepLabel>{{tab.label | translate}}</ng-template>
           <div *ngFor="let question of getQuestions(i)" class="form-row">
@@ -25,7 +26,7 @@
       <div class="form-row action-button-panel">
         <button mat-raised-button color="primary" type="button" class="action-button"
           (click)="save()">{{'Button.Save' | translate}}</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" class="action-button"
+        <button mat-raised-button color="primary" type="submit" class="action-button"
           (click)="submit()">{{'Button.Submit' | translate}}</button>
       </div>
       <div class="fab">

@@ -14,6 +14,7 @@ export class DynamicFormComponent implements OnInit {
   questions: QuestionBase<any>[] = [];
   form: FormGroup;
   tabs: { label: string, maxQuestionNumber: number }[] = [];
+  submitHasBeenClicked = false;
 
   constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService) {
     this.questions = this.questionsService.questions;
@@ -29,6 +30,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   submit() {
+    this.submitHasBeenClicked = true;
     if (this.form.invalid) {
       this.markFormGroupTouched(this.form);
     }
