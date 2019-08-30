@@ -1,0 +1,9 @@
+@import '~src/assets/css-variables.scss';
+
+.snackbar {
+  background-color: $background-color;
+  text-align: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}

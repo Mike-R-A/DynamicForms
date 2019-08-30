@@ -13,6 +13,8 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { CustomTranslateLoader } from './translate-loader';
 import { HttpClient } from '@angular/common/http';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { NotificationService } from './notification/notification.service';
+import { NotificationComponent } from './notification/notification.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new CustomTranslateLoader(http);
@@ -34,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotificationComponent],
   providers: [
     QuestionControlService,
     {
@@ -55,9 +57,13 @@ export function createTranslateLoader(http: HttpClient) {
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: { showError: true }
-    }
+    },
+    NotificationService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NotificationComponent
+  ]
 })
 export class AppModule {
   constructor() {

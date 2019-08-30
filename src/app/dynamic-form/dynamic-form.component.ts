@@ -4,6 +4,8 @@ import { FormGroup, FormArray } from '@angular/forms';
 import { QuestionBase } from '../question-base';
 import { QuestionControlService } from '../question-control.service';
 import { QuestionService } from '../question.service';
+import { NotificationService } from '../notification/notification.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -16,7 +18,8 @@ export class DynamicFormComponent implements OnInit {
   tabs: { label: string, maxQuestionNumber: number }[] = [];
   submitHasBeenClicked = false;
 
-  constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService) {
+  constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService,
+    private notificationService: NotificationService, private translateService: TranslateService) {
     this.questions = this.questionsService.questions;
     this.tabs = this.questionsService.tabs;
   }
@@ -26,6 +29,9 @@ export class DynamicFormComponent implements OnInit {
   }
 
   save() {
+    this.translateService.get('Message.Saved').subscribe(message => {
+      this.notificationService.openSnackBar(message);
+    });
     console.log(this.form.value);
   }
 
@@ -33,6 +39,13 @@ export class DynamicFormComponent implements OnInit {
     this.submitHasBeenClicked = true;
     if (this.form.invalid) {
       this.markFormGroupTouched(this.form);
+      this.translateService.get('Message.SubmissionFailInvalid').subscribe(message => {
+        this.notificationService.openSnackBar(message);
+      });
+    } else {
+      this.translateService.get('Message.Submitted').subscribe(message => {
+        this.notificationService.openSnackBar(message);
+      });
     }
     console.log(this.form.value);
   }

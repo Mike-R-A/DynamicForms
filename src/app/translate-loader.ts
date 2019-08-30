@@ -41,7 +41,12 @@ export class CustomTranslateLoader implements TranslateLoader {
                     },
                     Validation: {
                         IsRequired: 'yn ofynnol',
-                        Incomplete: 'Anghyflawn'
+                        Incomplete: 'Anghyflawn',
+                    },
+                    Message: {
+                        Saved: 'Cadwedig',
+                        Submitted: 'Cyflwynwyd',
+                        SubmissionFailInvalid: 'Methu cyflwyno: rhaid cwblhau\'r meysydd gofynnol'
                     }
                 })
             }
@@ -78,7 +83,12 @@ export class CustomTranslateLoader implements TranslateLoader {
                     },
                     Validation: {
                         IsRequired: 'is required',
-                        Incomplete: 'Incomplete'
+                        Incomplete: 'Incomplete',
+                    },
+                    Message: {
+                        Saved: 'Saved',
+                        Submitted: 'Submitted',
+                        SubmissionFailInvalid: 'Unable to submit: required fields must be completed'
                     }
                 })
             }

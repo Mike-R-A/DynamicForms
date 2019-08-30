@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title>{{'Header.FormTitle' | translate}}</mat-card-title>
     </mat-card-header>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form (ngSubmit)="submit()" [formGroup]="form">
 
       <ng-container *ngIf="!tabs">
         <div *ngFor="let question of questions" class="form-row">
@@ -30,8 +30,12 @@
           (click)="submit()">{{'Button.Submit' | translate}}</button>
       </div>
       <div class="fab">
-        <button mat-fab color="primary" type="button" (click)="save()">{{'Button.Save' | translate}}</button>
-        <button mat-fab color="accent" type="submit" (click)="submit()">{{'Button.Submit' | translate}}</button>
+        <div>
+          <button mat-fab color="primary" type="button" (click)="save()">{{'Button.Save' | translate}}</button>
+        </div>
+        <div>
+          <button mat-fab color="accent" type="submit" (click)="submit()">{{'Button.Submit' | translate}}</button>
+        </div>
       </div>
     </form>
 

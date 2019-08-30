@@ -13,30 +13,35 @@ import { DateQuestion } from './question-date';
 export class QuestionService {
   constructor() { }
 
-  get tabs() {
-    return [{
-      label: 'Header.Personal',
-      maxQuestionNumber: 3
-    },
-    {
-      label: 'Header.Education',
-      maxQuestionNumber: 4
-    },
-    {
-      label: 'Header.Something',
-      maxQuestionNumber: 6
-    },
-    {
-      label: 'Header.Other',
-      maxQuestionNumber: this.questions.length
-    }
-    ];
+  tabs = [{
+    label: 'Header.Personal',
+    maxQuestionNumber: 2
+  },
+  {
+    label: 'Header.Education',
+    maxQuestionNumber: 4
+  },
+  {
+    label: 'Header.Other',
+    maxQuestionNumber: this.questions.length
   }
+  ];
 
   get questions() {
 
     let questions: QuestionBase<any>[] = [
-
+      new DropdownQuestion({
+        key: 'title',
+        label: 'Label.Title',
+        options: [
+          { label: 'Mr', value: 'Mr' },
+          { label: 'Mrs', value: 'Mrs' },
+          { label: 'Miss', value: 'Miss' },
+          { label: 'Other', value: 'Other' },
+        ],
+        order: 0,
+        required: true,
+      }),
       new DropdownQuestion({
         key: 'institution',
         label: 'Label.LastInstitution',
@@ -65,6 +70,15 @@ export class QuestionService {
       new TextboxQuestion({
         key: 'lastName',
         label: 'Label.LastName',
+        value: 'Jones',
+        required: true,
+        order: 2,
+        type: 'text'
+      }),
+
+      new TextboxQuestion({
+        key: 'someothername',
+        label: 'Label.someothername',
         value: 'Jones',
         required: true,
         order: 2,
