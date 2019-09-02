@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-
-import { QuestionService } from './question.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [QuestionService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   displaySidebar = false;
