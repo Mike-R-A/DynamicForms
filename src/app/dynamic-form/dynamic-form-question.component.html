@@ -12,7 +12,7 @@
 
 
     <input *ngSwitchCase="'file'" [formControlName]="question.key" [id]="question.key" [type]="question.type"
-      placeholder="{{question.label | translate}}">
+      placeholder="{{question.label | translate}}" multiple>
 
     <mat-form-field *ngSwitchCase="'dropdown'">
       <mat-label>{{question.label | translate}}</mat-label>
