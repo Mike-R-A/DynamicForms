@@ -8,23 +8,27 @@ import { ArrayQuestion } from './question-array';
 import { QuestionControlService } from './question-control.service';
 import { RadioQuestion } from './question-radio';
 import { DateQuestion } from './question-date';
+import { DropdownService } from './dropdown.service';
 
 @Injectable()
 export class QuestionService {
-  constructor() { }
+  constructor(private dropdownService: DropdownService) { }
 
-  tabs = [{
-    label: 'Header.Personal',
-    maxQuestionNumber: 2
-  },
-  {
-    label: 'Header.Education',
-    maxQuestionNumber: 4
-  },
-  {
-    label: 'Header.Other',
-    maxQuestionNumber: this.questions.length
-  }
+  formTitle = 'Header.FormTitle'
+
+  tabs = [
+    {
+      label: 'Header.Personal',
+      maxQuestionNumber: 2
+    },
+    {
+      label: 'Header.Education',
+      maxQuestionNumber: 4
+    },
+    {
+      label: 'Header.Other',
+      maxQuestionNumber: this.questions.length
+    }
   ];
 
   get questions() {
@@ -33,22 +37,14 @@ export class QuestionService {
       new DropdownQuestion({
         key: 'title',
         label: 'Label.Title',
-        options: [
-          { label: 'Mr', value: 'Mr' },
-          { label: 'Mrs', value: 'Mrs' },
-          { label: 'Miss', value: 'Miss' },
-          { label: 'Other', value: 'Other' },
-        ],
+        options: this.dropdownService.titles,
         order: 0,
         required: true,
       }),
       new DropdownQuestion({
         key: 'institution',
         label: 'Label.LastInstitution',
-        options: [
-          { label: 'Swansea University', value: 'Swansea' },
-          { label: 'Other', value: 'Other' }
-        ],
+        options: this.dropdownService.institutions,
         order: 3,
         required: true,
       }),
@@ -158,12 +154,7 @@ export class QuestionService {
         key: 'someOptionsRadio',
         label: 'Label.PickAnOption',
         order: 8,
-        options: [
-          { label: 'A', value: 'A' },
-          { label: 'B', value: 'B' },
-          { label: 'C', value: 'C' },
-          { label: 'D', value: 'D' }
-        ]
+        options: this.dropdownService.institutions
       }),
 
       new DateQuestion({

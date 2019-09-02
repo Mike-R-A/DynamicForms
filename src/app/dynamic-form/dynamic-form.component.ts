@@ -16,6 +16,7 @@ export class DynamicFormComponent implements OnInit {
   questions: QuestionBase<any>[] = [];
   form: FormGroup;
   tabs: { label: string, maxQuestionNumber: number }[] = [];
+  formTitle: string;
   submitHasBeenClicked = false;
 
   constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService,
@@ -26,6 +27,7 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.questionControlService.toFormGroup(this.questions);
+    this.formTitle = this.questionsService.formTitle;
   }
 
   save() {

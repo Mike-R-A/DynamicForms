@@ -13,7 +13,7 @@
     <mat-form-field *ngSwitchCase="'dropdown'">
       <mat-label>{{question.label | translate}}</mat-label>
       <mat-select [id]="question.key" [formControlName]="question.key">
-        <mat-option *ngFor="let option of question.options" [value]="option.value">
+        <mat-option *ngFor="let option of question.options | async" [value]="option.value">
           {{option.label}}
         </mat-option>
       </mat-select>
@@ -26,7 +26,7 @@
       <mat-radio-group [id]="question.key" [formControlName]="question.key" class="radio-group"
         attr.aria-labelledby="{{question.key + '-label'}}">
         <mat-label [id]="question.key + '-label'" [attr.for]="question.key">{{question.label | translate}}</mat-label>
-        <mat-radio-button *ngFor="let option of question.options" [value]="option.value" class="radio-button">
+        <mat-radio-button *ngFor="let option of question.options | async" [value]="option.value" class="radio-button">
           {{option.label}}
         </mat-radio-button>
       </mat-radio-group>
