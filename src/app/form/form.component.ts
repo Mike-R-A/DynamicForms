@@ -20,11 +20,6 @@ export class FormComponent implements OnInit {
   formTitle = 'Header.FormTitle'
 
   questions = [
-    new FileQuestion({
-      key: 'docUpload',
-      label: 'Label.DocumentUpload',
-      order: 0
-    }),
     new DropdownQuestion({
       key: 'title',
       label: 'Label.Title',
