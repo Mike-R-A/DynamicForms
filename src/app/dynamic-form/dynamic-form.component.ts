@@ -13,21 +13,20 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  questions: QuestionBase<any>[] = [];
+  @Input() questions: QuestionBase<any>[] = [];
+  @Input() tabs: { label: string, maxQuestionNumber: number }[] = [];
+  @Input() formTitle: string;
   form: FormGroup;
-  tabs: { label: string, maxQuestionNumber: number }[] = [];
-  formTitle: string;
+
   submitHasBeenClicked = false;
 
-  constructor(private questionsService: QuestionService, private questionControlService: QuestionControlService,
+  constructor(private questionControlService: QuestionControlService,
     private notificationService: NotificationService, private translateService: TranslateService) {
-    this.questions = this.questionsService.questions;
-    this.tabs = this.questionsService.tabs;
   }
 
   ngOnInit() {
+    this.questions.sort((a, b) => a.order - b.order);
     this.form = this.questionControlService.toFormGroup(this.questions);
-    this.formTitle = this.questionsService.formTitle;
   }
 
   save() {

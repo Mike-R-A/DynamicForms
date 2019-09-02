@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { NotificationService } from './notification/notification.service';
 import { NotificationComponent } from './notification/notification.component';
+import { FormComponent } from './form/form.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new CustomTranslateLoader(http);
@@ -36,7 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  declarations: [AppComponent, NotificationComponent],
+  declarations: [AppComponent, NotificationComponent, FormComponent],
   providers: [
     QuestionControlService,
     {

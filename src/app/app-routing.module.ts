@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { FormComponent } from './form/form.component';
 
 const appRoutes: Routes = [
     {
@@ -11,7 +12,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'form',
-        component: DynamicFormComponent
+        component: FormComponent
     },
     { path: '**', component: HomeComponent }
 ];
