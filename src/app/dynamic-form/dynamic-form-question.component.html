@@ -10,6 +10,10 @@
       </mat-error>
     </mat-form-field>
 
+
+    <input *ngSwitchCase="'file'" [formControlName]="question.key" [id]="question.key" [type]="question.type"
+      placeholder="{{question.label | translate}}">
+
     <mat-form-field *ngSwitchCase="'dropdown'">
       <mat-label>{{question.label | translate}}</mat-label>
       <mat-select [id]="question.key" [formControlName]="question.key">

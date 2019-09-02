@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { ArrayQuestion } from '../question-array';
 import { RadioQuestion } from '../question-radio';
 import { DateQuestion } from '../question-date';
+import { FileQuestion } from '../question-file';
 
 @Component({
   selector: 'app-form',
@@ -19,6 +20,11 @@ export class FormComponent implements OnInit {
   formTitle = 'Header.FormTitle'
 
   questions = [
+    new FileQuestion({
+      key: 'docUpload',
+      label: 'Label.DocumentUpload',
+      order: 0
+    }),
     new DropdownQuestion({
       key: 'title',
       label: 'Label.Title',
